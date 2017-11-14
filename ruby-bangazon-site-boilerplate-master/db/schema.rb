@@ -10,7 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114123848) do
+ActiveRecord::Schema.define(version: 20171114205117) do
+
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id_id"
+    t.integer "product_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id_id"], name: "index_order_products_on_order_id_id"
+    t.index ["product_id_id"], name: "index_order_products_on_product_id_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id_id"
+    t.integer "payment_id_id"
+    t.date "order_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id_id"], name: "index_orders_on_customer_id_id"
+    t.index ["payment_id_id"], name: "index_orders_on_payment_id_id"
+  end
+
+  create_table "payment_types", force: :cascade do |t|
+    t.integer "customer_id_id"
+    t.integer "account_number_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_number_id"], name: "index_payment_types_on_account_number_id"
+    t.index ["customer_id_id"], name: "index_payment_types_on_customer_id_id"
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "product_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "seller_id_id"
+    t.integer "product_type_id_id"
+    t.float "price"
+    t.integer "quantity"
+    t.integer "sold"
+    t.string "title"
+    t.text "description"
+    t.boolean "local_delivery"
+    t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_type_id_id"], name: "index_products_on_product_type_id_id"
+    t.index ["seller_id_id"], name: "index_products_on_seller_id_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
