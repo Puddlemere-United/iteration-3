@@ -23,7 +23,7 @@ ADD MORE THINGS AFTER THIS!!!!
 ## Built With
 * [Ruby](http://ruby-lang.org/) - The language used
 * [SQLite3](https://www.sqlite.org/version3.html) - Library used to build the database
-* [Rails] (http://rubyonrails.org/) - The framework used
+* [Rails](http://rubyonrails.org/) - The framework used
 
 ## Contributing
 
