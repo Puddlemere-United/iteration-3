@@ -1,4 +1,4 @@
-class Customer < ApplicationRecord
+class CustomerProduct < ApplicationRecord
 	has_many :payment_types
 	has_many :orders
 
