@@ -2,8 +2,11 @@ class Product < ApplicationRecord
 	has_and_belongs_to_many :orders
 	belongs_to :product_type
 
-	# def add_product
-	# end
+	def show
+	end
+
+	def add_product
+	end
 
 	# def get_all_seller_products
 	# end

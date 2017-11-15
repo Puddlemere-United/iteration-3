@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ProductTypesControllerTest < ActionDispatch::IntegrationTest
+<<<<<<< HEAD
   test "should get new" do
     get product_types_new_url
     assert_response :success
@@ -11,4 +12,9 @@ class ProductTypesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+=======
+  # test "the truth" do
+  #   assert true
+  # end
+>>>>>>> master
 end
