@@ -1,3 +1,4 @@
 class CustomerProductsController < ApplicationController
 
+
 end
