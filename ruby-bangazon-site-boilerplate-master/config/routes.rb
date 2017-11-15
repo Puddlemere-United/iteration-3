@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'customer_products/Products'
 
   get 'customer_products/PaymentTypes'
@@ -9,6 +10,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
+
+  resources :product_types
+  resources :products
   resources :users
   resources :sessions
 

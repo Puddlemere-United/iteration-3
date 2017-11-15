@@ -12,6 +12,18 @@
 
 ActiveRecord::Schema.define(version: 20171114205117) do
 
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -47,7 +59,7 @@ ActiveRecord::Schema.define(version: 20171114205117) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "seller_id"
+    t.integer "user_id"
     t.integer "product_type_id"
     t.float "price"
     t.integer "quantity"
@@ -59,20 +71,12 @@ ActiveRecord::Schema.define(version: 20171114205117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
-    t.index ["seller_id"], name: "index_products_on_seller_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.string "postal_code"
-    t.string "phone_number"
-    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
