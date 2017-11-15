@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  get 'customer_products/Products'
+
+  get 'customer_products/PaymentTypes'
+
+  get 'customer_products/Orders'
+
   resources :products
   resources :payment_types
   resources :orders
