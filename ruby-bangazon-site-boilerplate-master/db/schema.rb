@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20171114205117) do
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.string "postal_code"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -77,6 +65,14 @@ ActiveRecord::Schema.define(version: 20171114205117) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "phone_number"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
