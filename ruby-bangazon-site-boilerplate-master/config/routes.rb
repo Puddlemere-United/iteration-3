@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'product_types/new'
+
+  get 'product_types/index'
+
   resources :products
   resources :payment_types
   resources :orders
