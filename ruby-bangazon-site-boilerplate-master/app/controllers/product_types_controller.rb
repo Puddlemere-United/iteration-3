@@ -2,20 +2,20 @@ class ProductTypesController < ApplicationController
 
 
     def index
-        @product_types = ProductType.all
+		@product_types = ProductType.all
+		@products = Product.group(:product_type_id).count
     end
   
-  def create
-  end
+    def create
+	end 
+	
+    def show
+    	@product_types = ProductType.find(params[:id])
+    end 
 
-  def show
-    @product_types = ProductType.find(params[:id])
-  end
-
-
-  def new
-  	@product_type = ProductType.new
-  end
+    def new
+    	@product_type = ProductType.new
+    end
 
 
     private
