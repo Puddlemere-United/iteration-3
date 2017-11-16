@@ -25,6 +25,13 @@
 		<%= f.label :description %><br>
 		<%= f.text_field :description %>
 	</p>
+	
+    <p>
+		<%= f.label :title %>
+	<select>
+		<%= options_for_select(["Free", "Basic", "Advanced", "Super Platinum"], selected: "Free") %>
+	</select>
+	</p>
 
 	<p>
 		<%= f.label :price %><br>
@@ -46,7 +53,19 @@
 		<%= f.text_field :local_delivery %>
 	</p>
 
+<!-- 	<div class="field">
+    	<%= f.label :avatar %><br>
+    	<%= f.file_field :avatar %>
+  	</div> -->
+
 	<p>
 		<%= f.submit "Create Product" %>
 	</p>
+
 <% end %>
+
+
+
+
+
+
