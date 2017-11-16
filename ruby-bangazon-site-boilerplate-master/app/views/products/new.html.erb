@@ -26,11 +26,12 @@
 		<%= f.text_field :description %>
 	</p>
 	
-    <p>
-		<%= f.label :title %>
-	<select>
-		<%= options_for_select(["Free", "Basic", "Advanced", "Super Platinum"], selected: "Free") %>
-	</select>
+	<p>
+		<%= f.label :product_type_id, "Product Type" %>
+		<select>
+			<% @product_types = ProductType.all %>
+			<%= options_from_collection_for_select(@product_types, 'id', 'product_type') %>
+		</select>
 	</p>
 
 	<p>
@@ -49,14 +50,12 @@
 	</p>
 
 	<p>
-		<%= f.label :local_delivery, "Local Delivery" %><br>
-		<%= f.text_field :local_delivery %>
+		<%= f.label :local_delivery, "Is local delivery available?" %><br>
+		<%= radio_button_tag(:local_delivery, "yes") %>
+		<%= label_tag(:no_local, "Yes") %>
+		<%= radio_button_tag(:local_delivery, "no") %>
+		<%= label_tag(:yes_local, "No") %>
 	</p>
-
-<!-- 	<div class="field">
-    	<%= f.label :avatar %><br>
-    	<%= f.file_field :avatar %>
-  	</div> -->
 
 	<p>
 		<%= f.submit "Create Product" %>

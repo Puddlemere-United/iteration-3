@@ -5,6 +5,6 @@ class PaymentTypesController < ApplicationController
 	end
 
 	def show
-	 	
+	 	@payment_types = PaymentType.all
 	end
 end
