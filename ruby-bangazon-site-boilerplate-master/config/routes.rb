@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'product_types/new'
+
+  get 'product_types/index'
 
   get 'customer_products/Products'
 

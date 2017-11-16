@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
 
 
-# Image uploader 
+
 
 
 
