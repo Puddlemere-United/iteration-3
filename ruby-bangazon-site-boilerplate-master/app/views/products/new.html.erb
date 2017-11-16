@@ -1,6 +1,7 @@
 <h1>New Product</h1>
 
-<%= form_with model: @product, local: true do |f| %>
+
+<%= form_for @product, html: { multipart: true } do |f| %>
 
 	<% if @product.errors.any? %>
 	    <div id="error_explanation">
@@ -28,10 +29,10 @@
 	
 	<p>
 		<%= f.label :product_type_id, "Product Type" %>
-		<select>
+
 			<% @product_types = ProductType.all %>
-			<%= options_from_collection_for_select(@product_types, 'id', 'product_type') %>
-		</select>
+			<%= f.select :product_type_id, options_from_collection_for_select(@product_types, 'id', 'product_type') %>
+	
 	</p>
 
 	<p>
@@ -51,10 +52,15 @@
 
 	<p>
 		<%= f.label :local_delivery, "Is local delivery available?" %><br>
-		<%= radio_button_tag(:local_delivery, "yes") %>
-		<%= label_tag(:no_local, "Yes") %>
-		<%= radio_button_tag(:local_delivery, "no") %>
-		<%= label_tag(:yes_local, "No") %>
+		<%= f.radio_button(:local_delivery, 1) %>
+		<%= f.label(:no_local, "Yes") %>
+		<%= f.radio_button(:local_delivery, 0) %>
+		<%= f.label(:yes_local, "No") %>
+	</p>
+
+	<p>
+		<%= f.label :image %>
+		<%= f.file_field :image %>
 	</p>
 
 	<p>
