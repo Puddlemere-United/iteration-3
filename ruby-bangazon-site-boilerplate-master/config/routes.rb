@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
   root 'welcome#index'
-  
+
+  get 'profile', to: 'users#show', as: 'profile'
+  get 'add_payment', to: 'payment_types#new', as: 'add_payment'
+
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'

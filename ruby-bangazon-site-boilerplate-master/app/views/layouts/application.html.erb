@@ -11,14 +11,15 @@
 <body>
 
     <div id="navbar">
-        <ul>
-            <li><a href="localhost:3000">Home</a></li>
-            <li><a href="#">Your Settings</a></li>
-            <li><a href="#">Shopping Cart</a></li>
-            <li><a href="#">Logout</a></li>
-            <li><a href="/product_types/:id">Product Category</a></li>
-        </ul>
 
+        <% if logged_in? %>
+            <%= link_to 'Logout', logout_path %>
+                <%= link_to 'Your Settings', profile_path%>
+
+                    <% else %>
+                        <%= link_to 'Login', login_path %>
+                            <%= link_to 'Sign Up', signup_path %>
+                                <% end %>
     </div>
     <%= yield %>
 </body>
