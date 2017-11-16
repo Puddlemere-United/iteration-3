@@ -1,2 +1,7 @@
-<h1>ProductTypes#index</h1>
-<p>Find me in app/views/product_types/index.html.erb</p>
+
+<h1>All Product Categories</h1>
+
+
+<% @product_types.each do |categories| %>
+    <h3><%= categories.product_type %></h3>
+<% end %>
