@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20171116194905) do
   end
 
   create_table "payment_types", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.string "account_number"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_payment_types_on_customer_id"
+    t.index ["user_id"], name: "index_payment_types_on_user_id"
   end
 
   create_table "product_types", force: :cascade do |t|

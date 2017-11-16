@@ -1,34 +1,35 @@
 class PaymentTypesController < ApplicationController
 
-	def index
-		@payment_types = PaymentType.all
-	end
-
+	
 	def new
 		@payment_type = PaymentType.new
 	end
-
+	
 	def create
-		@payment_type = PaymentType.new(payment_type_params)
+		@payment_type = PaymentType.new(payment_type)
+		@payment_type.user_id = session[:user_id]
 		if @payment_type.save
-		redirect_to @payment_type
+			redirect_to payment_type
 		else
 			render 'new'
 		end
 	end
-
-	def show
-		@payment_type = PaymentType.find(params[:id])
+	
+	def index
+		@payment_types = PaymentType.where(:user_id => session[:user_id])
 	end
+	# def show
+	# 	@payment_type = PaymentType.find(params[:id])
+	# end
 
 	def destroy
 		@payment_type = PaymentType.find(params[:id])
         @payment_type.destroy
-        redirect_to payment_type_path
+        redirect_to payment_types_path
 	end
 
 	private
     def payment_type
-        params.require(:payment_type).permit(:title, :account_number)
+        params.require(:payment_type).permit(:title, :account_number, :user_id)
     end
 end
