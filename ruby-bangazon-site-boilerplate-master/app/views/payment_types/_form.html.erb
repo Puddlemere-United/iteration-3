@@ -1,4 +1,4 @@
-<%= form_with(model: @payment_type) do |form| %>
+<%= form_with(model: @payment_type, local: true) do |form| %>
 
     <% if @payment_type.errors.any? %>
         <div id="error_explanation">

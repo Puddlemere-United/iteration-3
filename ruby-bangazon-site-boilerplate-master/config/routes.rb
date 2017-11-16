@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#show', as: 'profile'
   get 'add_payment', to: 'payment_types#new', as: 'add_payment'
+  # get 'payment_types', to: 'payment_types#index', as: 'payment_types'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
