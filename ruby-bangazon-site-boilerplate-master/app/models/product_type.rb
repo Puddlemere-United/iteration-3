@@ -10,6 +10,4 @@ class ProductType < ApplicationRecord
 
 	end
 
-
-
 end
