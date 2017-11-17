@@ -14,7 +14,7 @@
         <% if logged_in? %>
             <%= link_to 'Logout', logout_path %>
             <%= link_to 'Your Settings', profile_path%>
-                
+            <%= link_to 'Shopping Cart', orders_path %>
             <%= link_to 'Product Categories', product_types_path %>
             <%= link_to 'My Products', customer_products_path %>
         <% else %>
@@ -24,6 +24,7 @@
     </div>
 
     <%= yield %>
+
 </body>
 
 </html>
