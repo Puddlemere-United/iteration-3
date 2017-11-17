@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+    before_action :require_user
 
     #create order when first product added
     #will be a product partial, check with nora

@@ -9,24 +9,22 @@
 </head>
 
 <body>
-
     <div id="navbar">
 
         <% if logged_in? %>
             <%= link_to 'Logout', logout_path %>
-
                 <%= link_to 'Your Settings', profile_path%>
                     <%= link_to 'Shopping Cart', shopping_cart_path %>
                         <%= link_to 'Product Categories', product_types_path %>
-
-                            <% else %>
-                                <%= link_to 'Login', login_path %>
-                                    <%= link_to 'Sign Up', signup_path %>
-                                        <% end %>
-
-
+                            <%= link_to 'My Products', customer_products_path %>
+                                <% else %>
+                                    <%= link_to 'Login', login_path %>
+                                        <%= link_to 'Sign Up', signup_path %>
+                                            <% end %>
     </div>
+
     <%= yield %>
+
 </body>
 
 </html>

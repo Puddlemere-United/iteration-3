@@ -8,7 +8,7 @@
         <% if categories[:id] == count[0] %>
 
             <h3>
-                <%= categories.product_type %>
+                <%= link_to categories.product_type, product_type_path(categories) %>
                 <%= " " %>
                 <%= count[1] %>
             </h3>   
@@ -16,7 +16,7 @@
             <% @category_products = categories.products.limit(3) %>
             
             <% @category_products.each do |titles| %>
-                <p><a href= "#"><%= titles[:title] %></a></p>
+                <p><%= link_to titles[:title], product_path(titles) %></p>
             <% end %>
 
         <% end %>
