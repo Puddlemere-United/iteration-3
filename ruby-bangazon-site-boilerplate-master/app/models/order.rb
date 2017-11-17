@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :user
 	belongs_to :payment_type
-	has_and_belongs_to_many :products
+	has_many :product, through: :orders_products
 
 	def add_order
 	end

@@ -1,0 +1,35 @@
+<h1>Your Shopping Cart</h1>
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+
+    <!-- no equal cause no eval needed -->
+    <% @products.each do |product| %>
+        <tr>
+            <td>
+                <%= product.title %>
+            </td>
+            <td>
+                <%= product.price %>
+            </td>
+
+            <td>
+                <%= link_to 'Destroy', products_path(@products)
+                                        method: :delete,
+                                        data: {confirm: 'Are you sure?'} %>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Order Total</th>
+        </tr>
+        <tr>
+            <button>Complete Order</button>
+            <button>Delete Order</button>
+
+            <!-- end (do) loop -->
+            <% end %>
+</table>

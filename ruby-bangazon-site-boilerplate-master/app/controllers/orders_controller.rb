@@ -26,9 +26,7 @@ class OrdersController < ApplicationController
     #show shopping cart with products by user id
     #show.html.erb
     def show
-        @order = Order.find_by(params[:user_id])
-        @order = OrderProduct.find_by(params[:order_id])
-        @order = 
+       @products = Product.all
     end
 
     #deletes products from order and order
