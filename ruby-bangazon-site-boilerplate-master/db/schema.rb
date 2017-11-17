@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117034853) do
+ActiveRecord::Schema.define(version: 20171117160024) do
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.integer "payment_id"
     t.date "order_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orders_products", force: :cascade do |t|
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20171117034853) do
   end
 
   create_table "payment_types", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.string "account_number"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_payment_types_on_customer_id"
+    t.index ["user_id"], name: "index_payment_types_on_user_id"
   end
 
   create_table "product_types", force: :cascade do |t|
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20171117034853) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.string "city_sold_from"
+    t.boolean "active"
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
