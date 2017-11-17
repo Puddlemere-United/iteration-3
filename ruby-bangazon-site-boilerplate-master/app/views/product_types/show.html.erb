@@ -4,7 +4,7 @@
 
 <ul>
 	<% @product_by_category.each do |all_prod_by_category| %>
-		<li><%= all_prod_by_category[:title] %></li>
+		<li><%= link_to all_prod_by_category[:title], product_path(all_prod_by_category) %></li>
     <% end %>
     
 </ul>
