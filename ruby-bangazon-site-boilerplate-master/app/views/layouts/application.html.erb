@@ -16,11 +16,12 @@
         <% if logged_in? %>
             <%= link_to 'Logout', logout_path %>
                 <%= link_to 'Your Settings', profile_path%>
+                    <%= link_to 'Shopping Cart', order_path %>
 
-                    <% else %>
-                        <%= link_to 'Login', login_path %>
-                            <%= link_to 'Sign Up', signup_path %>
-                                <% end %>
+                        <% else %>
+                            <%= link_to 'Login', login_path %>
+                                <%= link_to 'Sign Up', signup_path %>
+                                    <% end %>
     </div>
     <%= yield %>
 </body>
