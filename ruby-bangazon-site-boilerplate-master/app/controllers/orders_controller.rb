@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+    before_action :require_user
 
     #create order when first product added
     #will be a product partial, check with nora
@@ -28,7 +29,7 @@ class OrdersController < ApplicationController
     def show
         @order = Order.find_by(params[:user_id])
         @order = OrderProduct.find_by(params[:order_id])
-        @order = 
+        # @order = 
     end
 
     #deletes products from order and order
