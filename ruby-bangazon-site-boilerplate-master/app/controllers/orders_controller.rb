@@ -26,7 +26,9 @@ class OrdersController < ApplicationController
     #show shopping cart with products by user id
     #show.html.erb
     def show
-       @products = Product.all
+    @shopping_cart = Order.where(:user_id => session[:user_id], :payment_type => nil).last
+    
+    
     end
 
     #deletes products from order and order
