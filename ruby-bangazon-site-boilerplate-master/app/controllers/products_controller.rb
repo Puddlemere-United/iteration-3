@@ -1,13 +1,22 @@
 class ProductsController < ApplicationController
 
+	# def index
+	# 	@products = Product.all
+	# end
+
+	def index
+		@products = if params[:term]
+		
+		Product.where('title LIKE ?', "%#{params[:term]}%")
+		else
+		Product.all
+		end
+	end
 
 	def show
 	    @product = Product.find(params[:id])
 	end
-	
-	def index
-		@products = Product.all
-	end
+
 
 	def new
 		@product = Product.new
@@ -25,18 +34,21 @@ class ProductsController < ApplicationController
 		end
 	end
 
+
+
 	def destroy
 		@product = Product.find(params[:id])
-		@product.destroy
+		@product.active = false
+		@product.save
 
-		redirect_to products_path
+		redirect_to customer_products_path
 	end
 
 
 	private
 
 		def product_params
-			params.require(:product).permit(:title, :description, :price, :quantity, :sold, :local_delivery, :product_type_id, :user_id, :image, :city_sold_from)
+			params.permit(:title, :description, :price, :quantity, :sold, :local_delivery, :product_type_id, :user_id, :image, :city_sold_from, :term, :active)
 		end
 
 end
