@@ -4,16 +4,10 @@ class OrdersController < ApplicationController
 
     #create order when first product added
     #will be a product partial, check with nora
-    def create
-        @order = Order.find(params[:user_id])
-        @order.user_id = session[:user_id]
-		if @order.save
-			redirect_to product
-		else
-			render 'new'
-		end
-        @order_product = OrderProduct.find(params[:id])
-        @order = @order.order_products.create(order_params)
+    def add_to_cart
+        @order = Order.find_or_create_by!(user_id: session[:user_id], :payment_type => nil)
+       
+        @order_product = OrderProduct.new(@order, params[:product_id])
         @order_product.save
         redirect_to order_path(@order)
     end
