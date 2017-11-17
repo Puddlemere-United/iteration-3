@@ -3,23 +3,24 @@
 
 <% @product_types.each do |categories| %>
 
-<% @products_count.each do |count| %>
+    <% @products_count.each do |count| %>
 
-    <% if categories[:id] == count[0] %>
+        <% if categories[:id] == count[0] %>
 
-        <h3>
-            <%= categories.product_type %>
-            <%= " " %>
-            <%= count[1] %>
-        </h3>   
-        
-        <% @category_products = categories.products.limit(3) %>
+            <h3>
+                <%= categories.product_type %>
+                <%= " " %>
+                <%= count[1] %>
+            </h3>   
+
+            <% @category_products = categories.products.limit(3) %>
+            
             <% @category_products.each do |titles| %>
                 <p><a href= "#"><%= titles[:title] %></a></p>
             <% end %>
-            
+
         <% end %>
-                 
+
     <% end %>
-    
+
 <% end %>

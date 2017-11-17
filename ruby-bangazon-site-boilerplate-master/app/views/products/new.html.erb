@@ -31,7 +31,7 @@
 		<%= f.label :product_type_id, "Product Type" %>
 
 			<% @product_types = ProductType.all %>
-			<%= f.select :product_type_id, options_from_collection_for_select(@product_types, 'id', 'product_type') %>
+			<%= f.select :product_type_id, options_from_collection_for_select(@product_types, 'id', 'product_type'), :required => true  %>
 	
 	</p>
 
@@ -42,7 +42,7 @@
 
 	<p>
 		<%= f.label :quantity %><br>
-		<%= f.text_field :quantity %>
+		<%= f.text_field :quantity%>
 	</p>
 
 	<p>
@@ -56,6 +56,11 @@
 		<%= f.label(:no_local, "Yes") %>
 		<%= f.radio_button(:local_delivery, 0) %>
 		<%= f.label(:yes_local, "No") %>
+	</p>
+
+	<p>
+		<%= f.label :city_sold_from, "Where will this product ship from?" %><br>
+		<%= f.text_field :city_sold_from %>
 	</p>
 
 	<p>
