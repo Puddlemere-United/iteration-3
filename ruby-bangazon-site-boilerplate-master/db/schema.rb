@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117160024) do
+ActiveRecord::Schema.define(version: 20171117214322) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "payment_id"
+    t.integer "payment_type_id"
     t.date "order_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_orders_on_payment_id"
+    t.index ["payment_type_id"], name: "index_orders_on_payment_type_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
