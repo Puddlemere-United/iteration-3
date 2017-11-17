@@ -1,3 +1,10 @@
-<h1>Products Categories</h1>
+<h1><%= @product_types.product_type %></h1>
 
-<%= @product_types.product_type %>
+<% @product_by_category = @product_types.products %>
+
+<ul>
+	<% @product_by_category.each do |all_prod_by_category| %>
+		<li><%= all_prod_by_category[:title] %></li>
+    <% end %>
+    
+</ul>
