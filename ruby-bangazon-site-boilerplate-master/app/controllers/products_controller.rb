@@ -5,8 +5,7 @@ class ProductsController < ApplicationController
 	# end
 
 	def index
-		@products = if params[:term]
-		
+		@products = if params[:term]		
 		Product.where('title LIKE ?', "%#{params[:term]}%")
 		else
 		Product.all
@@ -17,6 +16,18 @@ class ProductsController < ApplicationController
 	    @product = Product.find(params[:id])
 	end
 
+	def edit
+		@product = Product.find(params[:id])
+	end
+
+	def update
+		@product = Product.find(params[:id])
+		if @product.update(product_params)
+			redirect_to customer_products_path
+		else 
+			render 'edit'
+		end
+	end
 
 	def new
 		@product = Product.new

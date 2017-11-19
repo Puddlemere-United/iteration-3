@@ -1,4 +1,4 @@
-<h1>New Product</h1>
+<h1>Edit Product</h1>
 
 
 <%= form_for @product, html: { multipart: true } do |f| %>
@@ -46,6 +46,11 @@
 	</p>
 
 	<p>
+		<%= f.label :amount_sold, "Amount Sold" %><br>
+		<%= f.text_field :sold %>
+	</p>
+
+	<p>
 		<%= f.label :local_delivery, "Is local delivery available?" %><br>
 		<%= f.radio_button(:local_delivery, 1) %>
 		<%= f.label(:no_local, "Yes") %>
@@ -64,13 +69,7 @@
 	</p>
 
 	<p>
-		<%= f.submit "Create Product" %>
+		<%= f.submit "Submit Edit" %>
 	</p>
 
 <% end %>
-
-
-
-
-
-

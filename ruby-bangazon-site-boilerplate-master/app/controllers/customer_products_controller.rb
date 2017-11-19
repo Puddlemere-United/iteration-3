@@ -4,9 +4,8 @@ class CustomerProductsController < ApplicationController
     end
 
 	def index
-    	@products = Product.where(:user_id => session[:user_id])
+    	@products = Product.where(:user_id => session[:user_id]).where(:active => 't')
 	end
 
-	
 
 end
