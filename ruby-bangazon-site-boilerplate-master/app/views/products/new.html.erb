@@ -1,76 +1,81 @@
 <h1>New Product</h1>
 
+<div class="container">
+	<form>
+		<div class="form-group">
+			<%= form_for @product, html: { multipart: true } do |f| %>
 
-<%= form_for @product, html: { multipart: true } do |f| %>
+				<% if @product.errors.any? %>
+				    <div id="error_explanation">
+				      <h2>
+				        <%= pluralize(@product.errors.count, "error") %> prohibited
+				        this product from being saved:
+				      </h2>
+				      <ul>
+				        <% @product.errors.full_messages.each do |msg| %>
+				          <li>
+				          	 <div class="alert alert-danger"><%= msg %></div>
+				          </li>
+				        <% end %>
+				      </ul>
+				    </div>
+				<% end %>
 
-	<% if @product.errors.any? %>
-	    <div id="error_explanation">
-	      <h2>
-	        <%= pluralize(@product.errors.count, "error") %> prohibited
-	        this product from being saved:
-	      </h2>
-	      <ul>
-	        <% @product.errors.full_messages.each do |msg| %>
-	          <li><%= msg %></li>
-	        <% end %>
-	      </ul>
-	    </div>
-	<% end %>
+				<p>
+					<%= f.label :title %><br>
+					<%= f.text_field(:title, {:class => 'form-control'}) %>
+				</p>
 
-	<p>
-		<%= f.label :title %><br>
-		<%= f.text_field :title %>
-	</p>
+				<p>
+					<%= f.label :description %><br>
+					<%= f.text_field(:description, {:class => 'form-control'}) %>
+				</p>
+				
+				<p>
+					<%= f.label :product_type_id, "Product Type" %>
 
-	<p>
-		<%= f.label :description %><br>
-		<%= f.text_field :description %>
-	</p>
-	
-	<p>
-		<%= f.label :product_type_id, "Product Type" %>
+						<% @product_types = ProductType.all %>
+						<%= f.collection_select :product_type_id, @product_types, :id, :product_type, include_blank:true%>
+				
+				</p>
 
-			<% @product_types = ProductType.all %>
-			<%= f.collection_select :product_type_id, @product_types, :id, :product_type, include_blank:true %>
-	
-	</p>
+				<p>
+					<%= f.label :price %><br>
+					<%= f.text_field(:price, {:class => 'form-control'}) %>
+				</p>
 
-	<p>
-		<%= f.label :price %><br>
-		<%= f.text_field :price %>
-	</p>
+				<p>
+					<%= f.label :quantity %><br>
+					<%= f.text_field(:quantity, {:class => 'form-control'})%>
+				</p>
 
-	<p>
-		<%= f.label :quantity %><br>
-		<%= f.text_field :quantity%>
-	</p>
+				<p>
+					<%= f.label :local_delivery, "Is local delivery available?" %><br>
+					<%= f.radio_button(:local_delivery, 1) %>
+					<%= f.label(:no_local, "Yes") %>
+					<%= f.radio_button(:local_delivery, 0) %>
+					<%= f.label(:yes_local, "No") %>
+				</p>
+				
+				<p style: "#{'display:none' if @product.local_delivery == 0}">
+					<%= f.label :city_sold_from, "Where will this product ship from?" %><br>
+					<%= f.text_field(:city_sold_from, {:class => 'form-control'}) %>
+				</p>
 
-	<p>
-		<%= f.label :local_delivery, "Is local delivery available?" %><br>
-		<%= f.radio_button(:local_delivery, 1) %>
-		<%= f.label(:no_local, "Yes") %>
-		<%= f.radio_button(:local_delivery, 0) %>
-		<%= f.label(:yes_local, "No") %>
-	</p>
+				<p>
+					<%= f.label :image %>
+					<%= f.file_field(:image, {:class => 'form-control'}) %>
+				</p>
 
-	<p>
-		<%= f.label :city_sold_from, "Where will this product ship from?" %><br>
-		<%= f.text_field :city_sold_from %>
-	</p>
+				<p>
+					<%= f.submit "Create Product" %>
+				</p>
 
-	<p>
-		<%= f.label :image %>
-		<%= f.file_field :image %>
-	</p>
+			<% end %>
 
-	<p>
-		<%= f.submit "Create Product" %>
-	</p>
-
-<% end %>
-
-
-
+		</div>
+	</form>
+</div>
 
 
 

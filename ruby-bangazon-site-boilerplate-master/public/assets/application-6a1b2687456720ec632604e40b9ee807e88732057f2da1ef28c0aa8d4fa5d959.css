@@ -1,3 +1,7 @@
+/* line 5, /Users/tylerbarnett/workspace/ruby/sprint-3-initial-fullstack/iteration-3/ruby-bangazon-site-boilerplate-master/app/assets/stylesheets/customer_products.scss */
+.product_image_smaller {
+  width: 500px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,9 +14,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
-.product_image_smaller {
-	width: 500px;
-}
+
