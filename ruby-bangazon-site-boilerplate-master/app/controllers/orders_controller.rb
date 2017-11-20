@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
         @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
         # @order.payment_type_id = params[:payment_type_id]
         @order.update(order_params)
-        redirect_to order_confirmation_path
+        redirect_to orders_path
     end
     
     def edit 

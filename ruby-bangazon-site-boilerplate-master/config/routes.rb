@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   get 'shopping_cart', to: 'orders#show', as: 'shopping_cart'
   get 'edit_order', to: 'orders#edit', as: 'select_payment'
   patch 'complete_order', to: 'orders#update', as: 'complete_order'
-  get 'orders', to: 'orders#index', as: 'order_confirmation'
 
   get 'profile', to: 'users#show', as: 'profile'
   get 'add_payment', to: 'payment_types#new', as: 'add_payment'
