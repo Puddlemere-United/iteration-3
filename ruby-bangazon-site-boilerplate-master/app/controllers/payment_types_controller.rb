@@ -21,9 +21,9 @@ class PaymentTypesController < ApplicationController
 
 	# This shows saved payment types for selection to complete open order
 	# Needs to show in drop down or check boxes
-	# def show
-	# 	@payment_type = PaymentType.find(params[:id])
-	# end
+	def show
+		@payment_types = PaymentType.where(:user_id => session[:user_id])
+	end
 
 	def destroy
 		@payment_type = PaymentType.find(params[:id])
