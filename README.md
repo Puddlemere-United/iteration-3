@@ -19,12 +19,12 @@ In order to get this running on your system, just follow the below steps. Note t
 - Within the terminal, navigate to the sub-directory ```ruby-bangazon-site-boilerplate-master```
 - Run the command ```bundle install```. This will install all needed dependencies on your machine. These can be viewed in the ```ruby-bangazon-site-boilerplate-master/Gemfile``` file.
 - Run the command ```rails db:migrate```. This will create your database, in a file named: ```development.sqlite3```
-- Run the command ```rails server```, then, in a browser navigate to: [localhost:3000](localhost:3000) This will start a server on your local machine, allowing you to view this application in your browser on port 3000.
+- Run the command ```rails server```, then, in a browser navigate to: ```localhost:3000``` This will start a server on your local machine, allowing you to view this application in your browser on port 3000.
 
 
 ## Dependencies(outside of what comes with Ruby on Rails 5.1.4)
-gem "paperclip", '~> 5.0.0' (This is used to manage the upload of images for products.)
-gem 'bcrypt', '~> 3.1.7' (This is included with Rails but is commented out in the Gemfile)
+* gem "paperclip", '~> 5.0.0' (This is used to manage the upload of images for products.)
+* gem 'bcrypt', '~> 3.1.7' (This is included with Rails but is commented out in the Gemfile)
 
 ## Built With
 * [Ruby](http://ruby-lang.org/) - The language used
