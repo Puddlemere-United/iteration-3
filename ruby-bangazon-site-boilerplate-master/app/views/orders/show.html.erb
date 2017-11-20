@@ -28,7 +28,11 @@
         <!-- end (do) loop -->
         <% end %>
             <tr>
-                <th>Order Total</th>
+                <th>Order Total </th>
+                <th></th>
+                <th>
+                    <%= @shopping_cart.products.sum(:price)%>
+                </th>
             </tr>
 
 </table>
