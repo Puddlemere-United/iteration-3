@@ -2,6 +2,9 @@ class OrdersController < ApplicationController
 
     before_action :require_user
 
+    def create
+    end
+
     #create order when first product added
     #will be a product partial, check with nora
     def add_to_cart
@@ -24,9 +27,15 @@ class OrdersController < ApplicationController
     end
 
     def update
-        @select_payment = PaymentType.find(params[:user_id])
-        @select_payment = Order.update(@order, params[:paymet_type_id])
-        @select_payment.save
+        @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
+        # @order.payment_type_id = params[:payment_type_id]
+        @order.update(order_params)
+        redirect_to orders_path
+    end
+    
+    def edit 
+        @payment_types = PaymentType.where(:user_id => session[:user_id])
+        @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
     end
 
     #deletes products from order and order
