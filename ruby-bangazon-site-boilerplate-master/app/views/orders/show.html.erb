@@ -1,39 +1,54 @@
 <h1>Your Shopping Cart</h1>
 
-<table>
-    <tr>
-        <th>Product</th>
-        <th>Price</th>
-    </tr>
+<% if @shopping_cart.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@shopping_cart.errors.count, "error") %> You must add items to your cart
+        </h2>
+        <ul>
+            <% @shopping_cart.errors.full_messages.each do |msg| %>
+                <li>
+                    <%= msg %>
+                </li>
+                <% end %>
+        </ul>
+    </div>
+    <% end %>
 
-    <!-- no equal cause no eval needed -->
-    <% @shopping_cart.products.each do |product| %>
-        <tr>
-            <td>
-                <%= product.title %>
-            </td>
-            <td>
-                <%= product.price %>
-            </td>
-            <td>
-                <%= link_to 'Remove from Cart', order_product_path(product),
-                                            method: :destroy,
-                                            data: {confirm: 'Are you sure?'} %>
-            </td>
-
-        </tr>
-
-
-
-        <!-- end (do) loop -->
-        <% end %>
+        <table>
             <tr>
-                <th>Order Total </th>
-                <th></th>
-                <th>
-                    <%= @shopping_cart.products.sum(:price)%>
-                </th>
+                <th>Product</th>
+                <th>Price</th>
             </tr>
 
-</table>
-<%= link_to 'Complete Your Order', select_payment_path  %>
+            <!-- no equal cause no eval needed -->
+            <% @shopping_cart.products.each do |product| %>
+                <tr>
+                    <td>
+                        <%= product.title %>
+                    </td>
+                    <td>
+                        <%= product.price %>
+                    </td>
+                    <td>
+                        <%= link_to 'Remove from Cart', order_product_path(product),
+                                            method: :destroy,
+                                            data: {confirm: 'Are you sure?'} %>
+                    </td>
+
+                </tr>
+
+
+
+                <!-- end (do) loop -->
+                <% end %>
+                    <tr>
+                        <th>Order Total </th>
+                        <th></th>
+                        <th>
+                            <%= @shopping_cart.products.sum(:price)%>
+                        </th>
+                    </tr>
+
+        </table>
+        <%= link_to 'Complete Your Order', select_payment_path  %>
