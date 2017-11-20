@@ -1,44 +1,16 @@
-<!-- TITLE HEADER -->
-<h1><%= @product.title %></h1>
 
-
-<!-- DESCRIPTION -->
-<p>
-	Description: <%= @product.description %>
-</p>
-
-
-<!-- PRICE -->
-<p>
-	Price: <%= number_to_currency(@product.price)  %>
-</p>
-
-
-<!-- LOCAL DELIVERY -->
-<% if @product.local_delivery %>
-	<p>
-		Available for local delivery in <%= @product.city_sold_from %> only.<br>
-	</p>
-<% else %>
-	<p>
-		This product is not available for local delivery.
-	</p>
-<% end %>
-
-
-<!-- IMAGE -->
-<p>
-	<%= image_tag @product.image.url(:medium) %>
-</p>
-
-<!-- SOLD NUMBERS -->
-<p>
-	Amount Sold: <%= @product.sold %> <br>
-	Units Available: <%= @product.quantity %>
-</p>
-
-<!-- OPTIONS -->
-<td><%= link_to 'Edit', edit_product_path(@product) %></td>
-<td><%= link_to 'Delete', @product,
-              method: :delete,
-              data: { confirm: 'Are you sure? This will remove the product from the marketplace.'} %></td>
+<div class="card" style="width: 20rem;">
+    <%= image_tag @product.image.url(:medium, {:class => 'product_image_smaller' }) %>
+    <div class="card-body">
+        <h4 class="card-title"><%= @product.title %></h4>
+        <p class="card-text"><%= @product.description %></p>
+        <p class="card-text">Inventory: <%= @product.quantity %></p>
+        <p class="card-text">Sold: <%= @product.sold %></p>
+    </div>
+    <div class="card" style="width: 20rem;">
+        <ul class="list-group list-group-flush">
+            <%= link_to "Edit Item", edit_product_path(@product), class: "list-group-item" %>
+            <%= link_to "View Details", product_path(@product), class: "list-group-item" %>
+        </ul>
+    </div>
+</div>
