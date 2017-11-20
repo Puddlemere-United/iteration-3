@@ -1,0 +1,70 @@
+<h1>Edit Product</h1>
+
+
+<%= form_for @product, html: { multipart: true } do |f| %>
+
+	<% if @product.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@product.errors.count, "error") %> prohibited
+	        this product from being saved:
+	      </h2>
+	      <ul>
+	        <% @product.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	<% end %>
+
+	<p>
+		<%= f.label :title %><br>
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :description %><br>
+		<%= f.text_field :description %>
+	</p>
+	
+	<p>
+		<%= f.label :product_type_id, "Product Type" %>
+
+			<% @product_types = ProductType.all %>
+			<%= f.collection_select :product_type_id, @product_types, :id, :product_type, include_blank:true %>
+	
+	</p>
+
+	<p>
+		<%= f.label :price %><br>
+		<%= f.text_field :price %>
+	</p>
+
+	<p>
+		<%= f.label :quantity, "Inventory Available" %><br>
+		<%= f.text_field :quantity%>
+	</p>
+
+	<p>
+		<%= f.label :local_delivery, "Is local delivery available?" %><br>
+		<%= f.radio_button(:local_delivery, 1) %>
+		<%= f.label(:no_local, "Yes") %>
+		<%= f.radio_button(:local_delivery, 0) %>
+		<%= f.label(:yes_local, "No") %>
+	</p>
+
+	<p>
+		<%= f.label :city_sold_from, "Where will this product ship from?" %><br>
+		<%= f.text_field :city_sold_from %>
+	</p>
+
+	<p>
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+	</p>
+
+	<p>
+		<%= f.submit "Submit Edit" %>
+	</p>
+
+<% end %>

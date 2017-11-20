@@ -1,39 +1,32 @@
 <h1>My Products</h1>
 
-<table>
-     
-	<tr>
-		<th>Product</th>
-		<th>Inventory</th>
-		<th>Sold</th>  
-		<th>Active?</th> 
-	</tr>
-
+<div class="row product-card-group">
     <% @products.each do |product| %>
+        <div class="card col-md-3">
+            <%= image_tag product.image.url(:medium, {:class => 'product_image_smaller' }) %>
+            <div class="card-body">
+                <h4 class="card-title"><%= product.title %></h4>
+                <p class="card-text"><%= product.description %></p>
+                <p class="card-text">Inventory: <%= product.quantity %></p>
+                <p class="card-text">Sold: <%= product.sold %></p>
+            </div>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <%= link_to "Edit Item", edit_product_path(product), class: "list-group-item" %>
+                    <%= link_to "View Details", product_path(product), class: "list-group-item" %>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+</div>
 
-        <tr>
 
-            <td>
-                <%= product.title %>
-            </td>
+<%= link_to "Add A New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
 
-            <td>
-				<%= product.quantity %>
-            </td>
 
-			<td>
-				<%= product.sold %>
-            </td>
+  
 
-            <td>
-                <%= product.active %>
-            </td>
+    
 
-            <td><%= link_to 'Destroy', product,
-              method: :delete,
-              data: { confirm: 'Are you sure?'} %>
-            </td>
-            
-        </tr>
-        <% end %>
-</table>
+
+

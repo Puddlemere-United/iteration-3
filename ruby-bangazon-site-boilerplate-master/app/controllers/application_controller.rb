@@ -9,4 +9,18 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def index
+	  @products = if params[:term]
+	    Product.where('name LIKE ?', "%#{params[:term]}%")
+	  else
+	    Product.all
+	  end
+	end
+
+	private
+
+		def search_params
+			params.require(:product).permit(:term)
+		end
+
 end
