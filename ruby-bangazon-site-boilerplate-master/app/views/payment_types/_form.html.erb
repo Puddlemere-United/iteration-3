@@ -1,5 +1,5 @@
-<form>
-    <div class="form-group">
+
+<div class="form-group">
     <%= form_with(model: @payment_type, local: true) do |form| %>
 
         <% if @payment_type.errors.any? %>
@@ -31,8 +31,7 @@
                     <%= form.submit({:class => 'btn btn-primary'}) %>
                 </p>
                 <% end %>
-    </div>
-</form>
+</div>
 
 <!-- 
     <label for="exampleInputEmail1">Email address</label>

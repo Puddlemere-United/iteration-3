@@ -1,7 +1,6 @@
 <h1>New Product</h1>
 
 <div class="container">
-	<form>
 		<div class="form-group">
 			<%= form_for @product, html: { multipart: true } do |f| %>
 
@@ -57,7 +56,7 @@
 					<%= f.label(:yes_local, "No") %>
 				</p>
 				
-				<p style: "#{'display:none' if @product.local_delivery == 0}">
+				<p>
 					<%= f.label :city_sold_from, "Where will this product ship from?" %><br>
 					<%= f.text_field(:city_sold_from, {:class => 'form-control'}) %>
 				</p>
@@ -74,7 +73,6 @@
 			<% end %>
 
 		</div>
-	</form>
 </div>
 
 
