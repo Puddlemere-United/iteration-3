@@ -1,0 +1,27 @@
+<h1>Your Payment Types</h1>
+
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Account Number</th>
+    </tr>
+
+    <!-- no equal cause no eval needed -->
+
+    <% @payment_types.each do |payment_type| %>
+        <tr>
+            <td>
+                <%= payment_type.title %>
+            </td>
+            <td>
+                <%= payment_type.account_number %>
+            </td>
+            <td>
+                <%= link_to 'Select', payment_type_path(payment_type),
+                                            method: :update,
+                                            data: {confirm: 'Are you sure?'} %>
+            </td>
+        </tr>
+        <!-- end (do) loop -->
+        <% end %>
+</table>
