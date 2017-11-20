@@ -22,7 +22,7 @@ In order to get this running on your system, just follow the below steps. Note t
 - Run the command ```rails server```, then, in a browser navigate to: ```localhost:3000``` This will start a server on your local machine, allowing you to view this application in your browser on port 3000.
 
 
-## Dependencies(outside of what comes with Ruby on Rails 5.1.4)
+## Dependencies (outside of what comes with Ruby on Rails 5.1.4)
 * gem "paperclip", '~> 5.0.0' (This is used to manage the upload of images for products.)
 * gem 'bcrypt', '~> 3.1.7' (This is included with Rails but is commented out in the Gemfile)
 
@@ -35,10 +35,10 @@ In order to get this running on your system, just follow the below steps. Note t
 
 To contribute to this project, follow the steps below:
 
-1. Go to the repository (https://github.com/Puddlemere-United/bangazon-terminal-interface).
+1. Go to the repository (https://github.com/Puddlemere-United/iteration-3).
 1. Fork the repository to your Github account.
 1. Clone the repository to your local directory.
-1. Follow the "Installation" steps above to get the API up and running.
+1. Follow the "Installation" steps above to get the application up and running.
 1. After your updates are made on a branch, create a pull request and fully fill out the PR template to let us know what has been updated.
 
 ## Issue Reporting
