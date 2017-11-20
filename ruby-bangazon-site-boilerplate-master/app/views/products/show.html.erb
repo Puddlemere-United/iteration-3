@@ -10,7 +10,11 @@
     <div class="card" style="width: 20rem;">
         <ul class="list-group list-group-flush">
             <%= link_to "Edit Item", edit_product_path(@product), class: "list-group-item" %>
-            <%= link_to "View Details", product_path(@product), class: "list-group-item" %>
+            <%= link_to 'Delete', product_path(@product),
+            method: :delete,
+            data: { confirm: 'Are you sure?' }, 
+            class: "list-group-item" %>
+
         </ul>
     </div>
 </div>
