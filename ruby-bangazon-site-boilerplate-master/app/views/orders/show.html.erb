@@ -15,6 +15,11 @@
             <td>
                 <%= product.price %>
             </td>
+            <td>
+                <%= link_to 'Remove from Cart', order_product_path(product),
+                                            method: :destroy,
+                                            data: {confirm: 'Are you sure?'} %>
+            </td>
 
         </tr>
 
@@ -27,5 +32,4 @@
             </tr>
 
 </table>
-<button>Complete Order</button>
-<button>Delete Order</button>
+<%= link_to 'Complete Your Order', select_payment_path  %>

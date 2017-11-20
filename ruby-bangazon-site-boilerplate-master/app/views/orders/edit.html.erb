@@ -1,0 +1,13 @@
+<h1>Your Payment Types</h1>
+
+<%= form_for [@order], url: {action: "update"} do |form| %>
+
+
+
+    <%= form.collection_radio_buttons(:payment_type_id, @payment_types, :id, :title) %>
+        <%= form.hidden_field(:id) %>
+
+
+            <%= form.submit %>
+
+                <% end %>
