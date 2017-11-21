@@ -16,7 +16,8 @@
             <% @category_products = categories.products.limit(3) %>
             
             <% @category_products.each do |titles| %>
-                <p><%= link_to titles[:title], product_path(titles) %></p>
+                <div><%= link_to titles[:title], product_path(titles) %></div>
+                <span>Remaining Inventory: <%= titles[:quantity] %> | Price: <%= number_to_currency(titles[:price]) %></span>
             <% end %>
 
         <% end %>
