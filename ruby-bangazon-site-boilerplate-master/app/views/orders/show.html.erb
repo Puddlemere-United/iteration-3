@@ -5,27 +5,40 @@
     <% @shopping_cart.products.each do |product| %>
         <div class="card col-md-4">
             <%= image_tag product.image.url(:medium, {:class => 'product_image_smaller' }) %>
-            <div class="card-body">
-                <h4 class="card-title"><%= product.title %></h4>
-                <p class="card-text"><%= product.description %></p>
-                <p class="card-text"><%= number_to_currency(product.price) %></p>
-                <p class="card-text">Inventory: <%= product.quantity %></p>
-                <p class="card-text">Sold: <%= product.sold %></p>
-            </div>
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                 
-                    <%= link_to 'Remove from Cart', order_product_path(product),
-                                            method: :destroy,
-                                            data: {confirm: 'Are you sure?'} %>
-                </ul>
-            </div>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= product.title %>
+                    </h4>
+                    <p class="card-text">
+                        <%= product.description %>
+                    </p>
+                    <p class="card-text">
+                        <%= number_to_currency(product.price) %>
+                    </p>
+                    <p class="card-text">Inventory:
+                        <%= product.quantity %>
+                    </p>
+                    <p class="card-text">Sold:
+                        <%= product.sold %>
+                    </p>
+                </div>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+
+                        <%= link_to 'Remove from Cart', delete_product_from_order_path(product),
+                            method: :delete,
+                            data: {confirm: 'Are you sure?'} %>
+                    </ul>
+                </div>
         </div>
-    <% end %>
+        <% end %>
 
 </div>
 
 <div class="center-total-and-complete-btn">
-    <p class="card-text">Order Total: <%= number_to_currency(@shopping_cart.products.sum(:price))%></p>
+    <p class="card-text">Order Total:
+        <%= number_to_currency(@shopping_cart.products.sum(:price))%>
+    </p>
     <%= link_to 'Complete Your Order', select_payment_path  %>
+        <%= link_to 'Delete Your Order', @shopping_cart, method: :delete %>
 </div>

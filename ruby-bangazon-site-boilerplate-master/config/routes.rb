@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   post 'add_to_shopping_cart', to: 'orders#add_to_cart', as: 'add_to_shopping_cart'
   get 'edit_order', to: 'orders#edit', as: 'select_payment'
   patch 'complete_order', to: 'orders#update', as: 'complete_order'
+  
+  delete 'delete_product_from_order', to: 'orders#delete_product_from_order', as: 'delete_product_from_order'
 
   get 'profile', to: 'users#show', as: 'profile'
   get 'add_payment', to: 'payment_types#new', as: 'add_payment'
