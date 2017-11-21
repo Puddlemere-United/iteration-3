@@ -25,6 +25,7 @@ In order to get this running on your system, just follow the below steps.
 ## Dependencies (outside of what comes with Ruby on Rails 5.1.4)
 * gem "paperclip", '~> 5.0.0' (This is used to manage the upload of images for products.)
 * gem 'bcrypt', '~> 3.1.7' (This is included with Rails but is commented out in the Gemfile)
+* gem 'bcrypt', '~> whatever windows needs' (This is because bcrypt is a pile of garbage and needs to get their shit together)
 
 ## Built With
 * [Ruby](http://ruby-lang.org/) - The language used
