@@ -1,6 +1,7 @@
 <h1>Your Shopping Cart</h1>
 
 <div class="row">
+    <% if @shopping_cart %>
 
     <% @shopping_cart.products.each do |product| %>
         <div class="card col-md-4">
@@ -37,6 +38,12 @@
     <p class="card-text">Order Total:
         <%= number_to_currency(@shopping_cart.products.sum(:price))%>
     </p>
+
     <%= link_to 'Complete Your Order', select_payment_path, class: "btn btn-primary"  %>
         <%= link_to 'Delete Your Order', @shopping_cart, method: :delete, class: "btn btn-danger" %>
 </div>
+
+
+    <% else %>
+        <p>Add Products To Your Cart!</p>
+    <% end %>

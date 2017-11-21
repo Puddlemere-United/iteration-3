@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     def add_to_cart
         puts "INSIDE ADD TO CART"
         puts User.find(session[:user_id]).payment_type.first.account_number
-        @order = Order.find_or_create_by!(user_id: session[:user_id])
+        @order = Order.find_or_create_by!(user_id: session[:user_id], payment_type_id: nil)
             # order.payment_type_id = User.find(session[:user_id]).payment_type.first.id
         @order.errors.full_messages
         @order_product = OrderProduct.new(params.permit(:product_id))
