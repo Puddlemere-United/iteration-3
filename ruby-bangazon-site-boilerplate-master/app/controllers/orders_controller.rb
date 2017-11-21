@@ -2,16 +2,27 @@ class OrdersController < ApplicationController
 
     before_action :require_user
 
+    def new
+    end
+
     def create
     end
 
     #create order when first product added
     #will be a product partial, check with nora
     def add_to_cart
-        @order = Order.find_or_create_by!(user_id: session[:user_id], :payment_type => nil)
-        @order_product = OrderProduct.new(@order, params[:product_id])
+        puts "INSIDE ADD TO CART"
+        puts User.find(session[:user_id]).payment_type.first.account_number
+        @order = Order.find_or_create_by!(user_id: session[:user_id])
+            # order.payment_type_id = User.find(session[:user_id]).payment_type.first.id
+        @order.errors.full_messages
+        @order_product = OrderProduct.new(params.permit(:product_id))
+        puts "hello"
+        puts @order_product.id
+        @order_product.order_id = @order.id
         @order_product.save
-        redirect_to order_path(@order)
+        puts @order_product.errors.full_messages
+        redirect_to shopping_cart_path(@order)
     end
     
     #displays order confirmation
@@ -45,8 +56,8 @@ class OrdersController < ApplicationController
 
 
     private
-    def order_params
-        params.require(:order).permit(:user_id, :payment_type_id)
-    end
+        def order_params
+            params.permit(:order, :payment_type_id, :product)
+        end
 
 end
