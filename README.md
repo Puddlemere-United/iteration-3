@@ -1,5 +1,4 @@
 # Bangazon Full-Stack Sprint-3
-
 ## Full-Stack Bangazon Website
 
 ## Getting Started

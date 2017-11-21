@@ -1,37 +1,38 @@
 <h1>Your Shopping Cart</h1>
 
 <div class="row">
+    <% if @shopping_cart %>
 
-    <% @shopping_cart.products.each do |product| %>
-        <div class="card col-md-4">
-            <%= image_tag product.image.url(:medium, {:class => 'product_image_smaller' }) %>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <%= product.title %>
-                    </h4>
-                    <p class="card-text">
-                        <%= product.description %>
-                    </p>
-                    <p class="card-text">
-                        <%= number_to_currency(product.price) %>
-                    </p>
-                    <p class="card-text">Inventory:
-                        <%= product.quantity %>
-                    </p>
-                    <p class="card-text">Sold:
-                        <%= product.sold %>
-                    </p>
-                </div>
-                <div class="card">
-                    <ul class="list-group list-group-flush">
+        <% @shopping_cart.products.each do |product| %>
+            <div class="card col-md-4">
+                <%= image_tag product.image.url(:medium, {:class => 'product_image_smaller' }) %>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <%= product.title %>
+                        </h4>
+                        <p class="card-text">
+                            <%= product.description %>
+                        </p>
+                        <p class="card-text">
+                            <%= number_to_currency(product.price) %>
+                        </p>
+                        <p class="card-text">Inventory:
+                            <%= product.quantity %>
+                        </p>
+                        <p class="card-text">Sold:
+                            <%= product.sold %>
+                        </p>
+                    </div>
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
 
-                        <%= link_to 'Remove from Cart', delete_product_from_order_path(product),
+                            <%= link_to 'Remove from Cart', delete_product_from_order_path(product),
                             method: :delete,
                             data: {confirm: 'Are you sure?'} %>
-                    </ul>
-                </div>
-        </div>
-        <% end %>
+                        </ul>
+                    </div>
+            </div>
+            <% end %>
 
 </div>
 
@@ -42,3 +43,7 @@
     <%= link_to 'Complete Your Order', select_payment_path  %>
         <%= link_to 'Delete Your Order', @shopping_cart, method: :delete %>
 </div>
+
+<% else %>
+    <p>Add Products To Your Cart!</p>
+    <% end %>
