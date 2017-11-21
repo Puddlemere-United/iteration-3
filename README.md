@@ -1,5 +1,6 @@
 # Bangazon Full-Stack Sprint-3
 ## Full-Stack Bangazon Website
+The sprint 3 goal was to start building the basic Bangazon website. Our team took 15 issues and completed all of them. Users may login, register, logout, sell products, and order products.
 
 ## Getting Started
 
@@ -11,7 +12,7 @@ For Ruby installation guide, see [the official Ruby download page](https://www.r
 
 ### Installing
 
-In order to get this running on your system, just follow the below steps. Note that this program runs completely on the command line of your system.
+In order to get this running on your system, just follow the below steps. 
 
 - Clone down this repository, which will create a new directory for this project on your system
 - Within the terminal, CD into this newly created directory
