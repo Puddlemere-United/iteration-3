@@ -4,17 +4,17 @@
     <div class="card-body">
         <h4 class="card-title"><%= @product.title %></h4>
         <p class="card-text"><%= @product.description %></p>
+        <p class="card-text"><%= number_to_currency(@product.price) %></p>
         <p class="card-text">Inventory: <%= @product.quantity %></p>
         <p class="card-text">Sold: <%= @product.sold %></p>
     </div>
     <div class="card" style="width: 20rem;">
         <ul class="list-group list-group-flush">
-            <%= link_to "Edit Item", edit_product_path(@product), class: "list-group-item" %>
-            <%= link_to 'Delete', product_path(@product),
-            method: :delete,
-            data: { confirm: 'Are you sure?' }, 
-            class: "list-group-item" %>
+            <%= form_tag("/add_to_shopping_cart", method: "post") do  %>
+                <%= hidden_field_tag :product_id, @product.id %>
 
+            <%= submit_tag "Add to Cart" %>
+            <% end %>
         </ul>
     </div>
 </div>

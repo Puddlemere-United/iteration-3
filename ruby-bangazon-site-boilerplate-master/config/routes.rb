@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
 
   get 'shopping_cart', to: 'orders#show', as: 'shopping_cart'
+  post 'add_to_shopping_cart', to: 'orders#add_to_cart', as: 'add_to_shopping_cart'
   get 'edit_order', to: 'orders#edit', as: 'select_payment'
   patch 'complete_order', to: 'orders#update', as: 'complete_order'
   
