@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :customer_products
   
   get 'welcome/index'
-  root 'welcome#index'
+  root 'product_types#index'
 
 
   get 'shopping_cart', to: 'orders#show', as: 'shopping_cart'
