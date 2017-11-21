@@ -37,13 +37,14 @@ class OrdersController < ApplicationController
     @shopping_cart = Order.where(:user_id => session[:user_id], :payment_type => nil).last
     end
 
+    #This finds the order and updates based on order params, redirecting to add the payment type to the order, thus completing the order
     def update
         @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
-        # @order.payment_type_id = params[:payment_type_id]
         @order.update(order_params)
         redirect_to orders_path
     end
     
+    #inserts the payment type selection into order table
     def edit 
         @payment_types = PaymentType.where(:user_id => session[:user_id])
         @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
