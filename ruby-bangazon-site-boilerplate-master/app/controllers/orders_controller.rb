@@ -40,13 +40,33 @@ class OrdersController < ApplicationController
 
     #deletes products from order and order
     #show.html.erb
-    def destroy
+    def delete_product_from_order
+        @shopping_cart = Order.where(:user_id => session[:user_id], :payment_type => nil).last
+        puts params
+        @destroy_product = Product.find(params[:format])
+        @shopping_cart.products.delete(@destroy_product)
+        redirect_to shopping_cart_path
     end
+
+    # deletes shopping cart
+    #show.html.erb
+    def destroy
+        @order = Order.find_by(params[:id])
+        @order.products.destroy_all
+        @order.destroy
+        redirect_to product_types_path
+    end
+
+
 
 
     private
     def order_params
-        params.require(:order).permit(:user_id, :payment_type_id)
+        params.require(:order).permit(:user_id, :payment_type_id, :id)
+    end
+
+    def product_params
+        params.require(:product).permit(:id)
     end
 
 end
