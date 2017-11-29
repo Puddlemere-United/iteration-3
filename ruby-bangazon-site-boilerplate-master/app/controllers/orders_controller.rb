@@ -1,16 +1,9 @@
 class OrdersController < ApplicationController
 
     before_action :require_user
-#####################
-    def new
-    end
-
-    def create
-    end
-######################
 
     #create order when first product added
-    #will be a product partial, check with nora
+   
     def add_to_cart
         @order = Order.find_or_create_by!(user_id: session[:user_id], payment_type_id: nil)
             # order.payment_type_id = User.find(session[:user_id]).payment_type.first.id

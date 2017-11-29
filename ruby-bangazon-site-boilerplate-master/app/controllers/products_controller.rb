@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
-			redirect_to customer_products_path
+			redirect_to user_products_path
 		else 
 			render 'edit'
 		end
@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
 		@product.active = false
 		@product.save
 
-		redirect_to customer_products_path
+		redirect_to user_products_path
 	end
 
 

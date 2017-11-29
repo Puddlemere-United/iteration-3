@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   get 'product_types/index'
 
-  get 'customer_products/Products'
+  get 'user_products/Products'
 
-  get 'customer_products/PaymentTypes'
+  get 'user_products/PaymentTypes'
 
-  get 'customer_products/Orders'
+  get 'user_products/Orders'
 
   resources :products
   resources :payment_types
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :order_products
   resources :sessions
-  resources :customer_products
+  resources :user_products
   
   get 'welcome/index'
   root 'product_types#index'
@@ -37,9 +37,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  # get 'customer_products/Products'
-  # get 'customer_products/PaymentTypes'
-  # get 'customer_products/Orders'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
