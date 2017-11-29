@@ -1,9 +1,7 @@
 class ProductsController < ApplicationController
 
-	# def index
-	# 	@products = Product.all
-	# end
-
+	
+	#for search by fuzzy term
 	def index
 		@products = if params[:term]
 			Product.where('title LIKE ?', "%#{params[:term]}%")
@@ -12,14 +10,17 @@ class ProductsController < ApplicationController
 		end
 	end
 
+	# pulls back one product
 	def show
 	    @product = Product.find(params[:id])
 	end
 
+	#User can edit added product
 	def edit
 		@product = Product.find(params[:id])
 	end
 
+	#product table updated by user
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
@@ -29,6 +30,7 @@ class ProductsController < ApplicationController
 		end
 	end
 
+	
 	def new
 		@product = Product.new
 	end

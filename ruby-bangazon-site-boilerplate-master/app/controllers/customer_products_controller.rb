@@ -1,5 +1,9 @@
+
+# needs to be renamed with user
 class CustomerProductsController < ApplicationController
 
+	########################
+	# prob not needed
 	def show
     end
 
