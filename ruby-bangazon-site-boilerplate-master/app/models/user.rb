@@ -3,33 +3,4 @@ class User < ApplicationRecord
   has_many :payment_type
 
   validates_uniqueness_of :email
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end

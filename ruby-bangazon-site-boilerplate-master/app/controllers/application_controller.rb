@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	###################################
+	#navbar search - may be duplicate
+	###################################
 	def index
 	  @products = if params[:term]
 	    Product.where('name LIKE ?', "%#{params[:term]}%")
