@@ -2,12 +2,8 @@
 
 <%= form_for [@order], url: {action: "update"} do |form| %>
 
-
-
     <%= form.collection_radio_buttons(:payment_type_id, @payment_types, :id, :title) %>
-        <%= form.hidden_field(:id) %>
+    <%= form.hidden_field(:id) %>
+    <%= form.submit %>
 
-
-            <%= form.submit %>
-
-                <% end %>
+<% end %>

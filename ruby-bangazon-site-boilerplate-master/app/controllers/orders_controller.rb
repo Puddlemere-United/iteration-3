@@ -34,22 +34,28 @@ class OrdersController < ApplicationController
     #show shopping cart with products by user id
     #show.html.erb
     def show
-    @shopping_cart = Order.where(:user_id => session[:user_id], :payment_type => nil).last
+        @shopping_cart = Order.where(:user_id => session[:user_id], :payment_type => nil).last
     end
 
     #This finds the order and updates based on order params, redirecting to add the payment type to the order, thus completing the order
     def update
         @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
         @order.update(order_params)
+        inventory_to_sold(@order)
         redirect_to orders_path
     end
+
+
+    def test
+        puts "test test test"
+    end 
     
     #inserts the payment type selection into order table
     def edit 
         @payment_types = PaymentType.where(:user_id => session[:user_id])
         @order = Order.where(:user_id => session[:user_id], :payment_type => nil).last
     end
-
+    
     #deletes products from order and order
     #show.html.erb
     def delete_product_from_order
@@ -73,12 +79,21 @@ class OrdersController < ApplicationController
 
 
     private
-    def order_params
-        params.require(:order).permit(:user_id, :payment_type_id, :id)
-    end
 
-    def product_params
-        params.require(:product).permit(:id)
-    end
+        def order_params
+            params.require(:order).permit(:user_id, :payment_type_id, :id)
+        end
+
+        def product_params
+            params.require(:product).permit(:id)
+        end
+
+        def inventory_to_sold(order)
+            order.products.each do |product|
+                product.quantity -= 1
+                product.sold += 1
+                product.save
+            end
+        end
 
 end
