@@ -89,10 +89,12 @@ class OrdersController < ApplicationController
         end
 
         def inventory_to_sold(order)
-            order.products.each do |product|
-                product.quantity -= 1
-                product.sold += 1
-                product.save
+            
+            order.products.each do |product|    
+                product = Product.find(product.id)           
+                product_quantity = product.quantity - 1
+                product_sold = product.sold + 1  
+                product.update_attributes({quantity: product_quantity, sold: product_sold})
             end
         end
 
